@@ -1,0 +1,284 @@
+####VIEW_ONGLETS
+  commun_onglet:
+    view: yes
+    name: Espace de vie
+    icon: mdi:home-heart
+    entities:
+      - group.cuisine
+      - group.salle_manger
+      - group.salon
+      - group.foyer
+      - group.entree
+      
+  bureaux_onglet:
+    view: yes
+    name: Bureaux
+    icon: mdi:laptop
+    entities:
+      - group.bureau_hartis
+      - group.bureau_maryse
+      
+  soussol_onglet:
+    view: yes
+    name: Sous-Sol
+    icon: mdi:stairs
+    entities:
+      - group.soussol
+      
+  cours_onglet:
+    view: yes
+    name: Dehors
+    icon: mdi:hot-tub
+    entities:
+      - group.cour
+      
+  confort_onglet:
+    view: yes
+    name: Confort
+    icon: mdi:thermostat
+    entities:
+      - group.systeme_central
+      - group.radiant
+      - group.horloge
+      - group.energie
+      
+  climat_onglet:
+    view: yes
+    name: Climat
+    icon: mdi:weather-partlycloudy
+    entities:
+      - weather.prevision
+      - group.climatds
+#      - weather.prevision_owm 
+#      - group.climatowm
+#      - group.climatyr
+     
+  chambres_onglet:
+    view: yes
+    name: Chambres
+    icon: mdi:hotel
+    entities:
+      - group.chambre_principale
+      - group.chambre_clement
+
+  serrure_onglet:
+    view: yes
+    name: Serrures
+    icon: mdi:home-lock
+    entities:
+      - group.serrure
+      - group.personnes
+      - group.telephones
+####GROUPE
+  bureau_hartis:
+    name: Hartis
+    entities:
+      - lock.polycontrol_danalock_v3_btze_locked
+      - switch.sousbureau
+      - switch.lampedroite
+      - switch.lampegauche
+      - light.railbureau
+      - light.railarmoire
+      - media_player.bureau
+  chambre_principale:
+    name: Chambre principale
+    entities:
+      - light.palfonierchambreprincipale
+  bureau_maryse:
+    name: Maryse
+    entities:
+      - light.conference
+      - switch.decormaryse
+  chambre_clement:
+    name: Chambre de Clément
+    entities:
+      - light.plafonnierchambreclement
+  foyer:
+    name: Foyer
+    entities:
+      - switch.arbrenoel
+      - light.chandelier
+  cour:
+    name: Cour arrière
+    entities:
+      - light.encastre_patio
+      - light.guirlande_gazebo
+      - switch.piscine
+      - switch.fontaines
+  cuisine:
+    name: Cuisine
+    entities:
+      - light.railcomptoir
+      - light.comptoirledstrip
+      - light.encastrecuisine
+      - climate.cuisine
+  salle_manger:
+    name: Salle à manger
+    entities:
+      - light.lustre
+      - media_player.cuisine
+      - climate.cuisine
+  salon:
+    name: Salon
+    entities:
+      - switch.buffet
+      - light.plafonniersalon
+      - light.torchere
+      - light.led_buffet
+      - media_player.appletv_salon
+      - remote.appletv_salon
+      - media_player.tele_du_salon
+      - media_player.roku_salon
+      - remote.salon_ultimate
+      - climate.maison
+
+  soussol:
+    name: Sous-sol
+    entities:
+      - light.lavage
+      - light.sallejeu
+      - media_player.appletv_jeu
+      - remote.appletv_jeu
+  entree:
+    name: Entrée
+    entities:
+      - light.suspenduentree
+  personnes:
+    name: Qui est là
+    entities:
+      - device_tracker.hadi_iphone_x
+      - device_tracker.iphone6olivier
+      - device_tracker.iphonedeclement
+      - device_tracker.iphonedominique
+      - device_tracker.iphonexmaryse
+      - device_tracker.lysandre6
+      - device_tracker.iphonejulie
+      - device_tracker.danielgingras
+
+  energie:
+    name: Énergie
+    entities:
+      - sensor.hydroquebec_period_length
+      - sensor.hydroquebec_period_total_bill
+      - sensor.hydroquebec_period_total_days
+      
+  systeme_central:
+    name: Système central
+    entities:
+      - climate.maison
+      - sensor.maison_thermostat_humidity
+      - sensor.maison_thermostat_hvac_state
+      - sensor.maison_thermostat_operation_mode
+      - sensor.maison_thermostat_target
+      - sensor.maison_thermostat_temperature
+      - binary_sensor.maison_thermostat_fan
+      - binary_sensor.maison_thermostat_has_leaf
+      - binary_sensor.maison_thermostat_is_locked
+      - binary_sensor.maison_thermostat_is_using_emergency_heat
+      - binary_sensor.maison_thermostat_online
+      - binary_sensor.peloquin_away
+
+  radiant:
+    name: Plancher cuisine
+    entities:
+      - climate.cuisine
+      - sensor.nuheat_etat
+      - sensor.nuheat_mode
+      - sensor.nuheat_objectif
+      - sensor.nuheat_temperature
+  serrure:
+    name: Serrures
+    entities:
+      - lock.polycontrol_danalock_v3_btze_locked_2
+      - lock.polycontrol_danalock_v3_btze_locked_3
+      - lock.polycontrol_danalock_v3_btze_locked_5
+      - sensor.polycontrol_danalock_v3_btze_alarm_level
+      - sensor.polycontrol_danalock_v3_btze_alarm_level_2
+      - sensor.polycontrol_danalock_v3_btze_alarm_level_3
+      - sensor.polycontrol_danalock_v3_btze_alarm_level_5
+      - sensor.polycontrol_danalock_v3_btze_alarm_type
+      - sensor.polycontrol_danalock_v3_btze_alarm_type_2
+      - sensor.polycontrol_danalock_v3_btze_alarm_type_3
+      - sensor.polycontrol_danalock_v3_btze_alarm_type_5
+      - sensor.polycontrol_danalock_v3_btze_access_control
+      - sensor.polycontrol_danalock_v3_btze_sourcenodeid
+  horloge:
+     name: Horloge
+     entities:
+      - sun.sun
+      - sensor.sun_state
+      - sensor.time
+      - sensor.date
+      - sensor.date_french
+      - sensor.date_long
+
+      
+  telephones:
+    name: Téléphones
+    entities:
+     - sensor.hadi_iphone_x_battery_level
+     - sensor.hadi_iphone_x_battery_state
+     - device_tracker.hadi_iphone_x
+     - sensor.ipad_pro_hadi_battery_level
+     - sensor.ipad_pro_hadi_battery_state
+     
+#  climatyr:
+#    name: Climat YR
+#    entities:
+#      - sensor.meteo_yr_cloudiness
+#      - sensor.meteo_yr_dewpoint_temperature
+#      - sensor.meteo_yr_fog
+#      - sensor.meteo_yr_high_clouds
+#      - sensor.meteo_yr_humidity
+#      - sensor.meteo_yr_low_clouds
+#      - sensor.meteo_yr_medium_clouds
+#      - sensor.meteo_yr_precipitation
+#      - sensor.meteo_yr_pressure
+#      - sensor.meteo_yr_symbol
+#      - sensor.meteo_yr_temperature
+#      - sensor.meteo_yr_wind_direction
+#      - sensor.meteo_yr_wind_speed
+      
+#  climatowm:
+#    name: Climat OWM
+#    entities:
+#      - sensor.meteo_owm_cloud_coverage
+#      - sensor.meteo_owm_condition
+#      - sensor.meteo_owm_humidity
+#      - sensor.meteo_owm_pressure
+#      - sensor.meteo_owm_rain
+#      - sensor.meteo_owm_snow
+#      - sensor.meteo_owm_temperature
+#      - sensor.meteo_owm_weather_code
+#      - sensor.meteo_owm_wind_bearing
+#      - sensor.meteo_owm_wind_speed
+      
+  climatds:
+    name: Climat
+    entities:
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_daily_max_precip_intensity
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_daytime_high_apparent_temperature
+      - sensor.dark_sky_daytime_high_temperature
+      - sensor.dark_sky_dew_point
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_moon_phase
+      - sensor.dark_sky_overnight_low_apparent_temperature
+      - sensor.dark_sky_overnight_low_temperature
+      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_accumulation
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed

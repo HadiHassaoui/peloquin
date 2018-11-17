@@ -1,0 +1,183 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Peloquin
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 30
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Toronto
+  # Customization file
+  customize: !include customize.yaml
+  # Sensor file
+sensor: !include sensors.yaml
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes/
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Example configuration.yaml entry
+ios:
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - samsung_tv
+    - apple_tv
+    - harmony
+  enable:
+    - homekit  
+    
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+          
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+tuya:
+  username: !secret tuya_user
+  password: !secret tuya_pw
+  country_code: 1
+  platform: tuya
+  
+nuheat:  
+  username: maison@hassaoui.com
+  password: !secret nuheat_pw
+  devices: !secret nuheat_device
+  
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+
+ifttt:
+  key: !secret ifttt_key
+
+device_tracker:
+  - platform: unifi
+    host: 192.168.123.222
+    username: Hartis
+    password: !secret ubiquiti_controler_pw
+    verify_ssl: false
+    ssid_filter:
+      - 'HartisUB'
+  - platform: unifi_direct
+    host: 192.168.123.231
+    username: Hartis
+    password: !secret ubiquiti_ap_pw
+  - platform: unifi_direct
+    host: 192.168.123.232
+    username: Hartis
+    password: !secret ubiquiti_ap_pw
+  - platform: unifi_direct
+    host: 192.168.123.233
+    username: Hartis
+    password: !secret ubiquiti_ap_pw
+  - platform: unifi_direct
+    host: 192.168.123.234
+    username: Hartis
+    password: !secret ubiquiti_ap_pw
+  - platform: unifi_direct
+    host: 192.168.123.235
+    username: Hartis
+    password: !secret ubiquiti_ap_pw
+remote:
+  - platform: harmony
+    name: Salon Ultimate
+    host: 192.168.123.238
+    
+media_player:
+  - platform: roku
+    name: Roku Salon
+  
+apple_tv:
+  - name: "AppleTV Jeu"
+    host: 192.168.123.237
+    login_id: !secret appletv_jeu
+    start_off: true
+  - name: "AppleTV Salon"
+    host: 192.168.123.236
+    login_id: !secret appletv_salon
+    start_off: true
+
+http:
+  base_url: !secret duckdns_8123
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+  api_password: !secret api_pw
+  cors_allowed_origins:
+  # add in the domain name or IP mentioned in the CORS error
+    - https://reformedreality.com
+    - http://reformedreality.com
+
+homekit:
+
+zwave:
+  usb_path: /dev/ttyACM0
+  network_key: !secret zwave_key
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    units: ca
+    name: Prévision
+    mode: daily
+
+panel_iframe:
+  unifi:
+    title: WIFI Ubiquiti
+    icon: mdi:wifi
+    url: !secret duckdns_8443
+    
+#  pihole:
+#    title: Pi-hole
+#    icon: mdi:block-helper
+#    url: !secret duckdns_4865
+    
+  router:
+    title: Router
+    icon: mdi:router-wireless-settings
+    url: !secret duckdns_9999
+
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret duckdns_3218

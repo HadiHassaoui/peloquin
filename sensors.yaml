@@ -1,0 +1,124 @@
+- platform: template
+  sensors:
+    nuheat_temperature:
+      friendly_name: "Température"
+      unit_of_measurement: '°C'
+      value_template: "{{ states.climate.cuisine.attributes.current_temperature }}"
+    nuheat_objectif:
+      friendly_name: "Objetcif"
+      unit_of_measurement: '°C'
+      value_template: "{{ states.climate.cuisine.attributes.taget_temperature }}"
+    nuheat_mode:
+      friendly_name: "Mode"
+      value_template: "{{ states.climate.cuisine.attributes.current_hold_mode }}"
+    nuheat_etat:
+      friendly_name: "État"
+      value_template: "{{ states.climate.cuisine.attributes.current_operation }}"
+    sun_state:
+      friendly_name: "Clareté"
+      value_template: >-
+        {% if is_state('sun.sun', 'above_horizon') %}
+          Jour
+        {% else %}
+          Nuit
+        {% endif %}
+#- platform: yr
+#  name: Météo YR
+#  monitored_conditions:
+#    - temperature
+#    - symbol
+#    - precipitation
+#    - windSpeed
+#    - pressure
+#    - windDirection
+#    - humidity
+#    - fog
+#    - cloudiness
+#    - lowClouds
+#    - mediumClouds
+#    - highClouds
+#    - dewpointTemperature
+      
+- platform: hydroquebec
+  username: HadiHassaoui
+  password: !secret hydroquebec_pw
+  contract: !secret hydroquebec_contract
+  monitored_variables:
+    - period_total_bill
+    - period_length
+    - period_total_days
+
+    
+#- platform: openweathermap
+#  name: Météo OWM
+#  api_key: !secret owm_pw
+#  language: fr
+#  monitored_conditions:
+#    - weather
+#    - temperature
+#    - wind_speed
+#    - wind_bearing
+#    - humidity
+#    - pressure
+#    - clouds
+#    - rain
+#    - snow
+#    - weather_code
+
+- platform: darksky
+  name: Dark Sky
+  api_key: !secret darksky_api_key
+  language: fr
+#  forecast:
+#    - 1
+#    - 2
+#    - 3
+#    - 4
+#    - 5
+  monitored_conditions:
+    - icon
+    - summary #A human-readable text summary of the current conditions.
+    - precip_type  #The type of precipitation occurring.
+    - precip_intensity #The average expected intensity of precipitation occurring.
+    - precip_probability #A value between 0 and 1 which is representing the probability of precipitation.
+    - precip_accumulation #Daily snow accumulation. Returns unknown if no snow accumulation available.
+    - temperature #The current temperature.
+    - apparent_temperature #A numerical value representing the apparent (or “feels like”) temperature.
+    - dew_point #The dew point.
+    - wind_speed #The wind speed.
+    - wind_bearing #Where the wind is coming from in degrees, with true north at 0° and progressing clockwise.
+    - cloud_cover #The percentage of sky occluded by clouds.
+    - humidity #The relative humidity.
+    - pressure #The sea-level air pressure in millibars.
+    - visibility #The average visibility.
+    - ozone #The columnar density of total atmospheric ozone in Dobson.
+    - minutely_summary #A human-readable text summary for the next hour.
+    - hourly_summary #A human-readable text summary for the next 24 hours.
+    - daily_summary #A human-readable text summary for the next 7 days.
+    - temperature_high #Today’s daytime expected high temperature.
+    - temperature_low #Today’s overnight expected low temperature.
+    - apparent_temperature_high #Today’s daytime expected apparent high temperature.
+    - apparent_temperature_low #Today’s overnight expected apparent low temperature.
+    - precip_intensity_max #Today’s expected maximum intensity of precipitation.
+    - uv_index #The current UV index.
+    - moon_phase #The fractional part of the lunation number during the given day.
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+- platform: template
+  sensors:
+    date_french:
+      friendly_name: 'Date'
+      value_template: '{{ as_timestamp(now()) | timestamp_custom("%d/%m/%y", True) }}'
+
+- platform: template
+  sensors:
+    date_long:
+      friendly_name: 'Date'
+      value_template: >
+        {% set months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"] %}
+        {% set days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"] %}
+        {{ days[now().weekday()] }} le {{ now().day }} {{ months[now().month-1] }}, {{ now().year }}

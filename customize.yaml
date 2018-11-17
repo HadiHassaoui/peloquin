@@ -1,0 +1,62 @@
+switch.lampedroite:
+  icon: mdi:desk-lamp
+switch.lampegauche:
+  icon: mdi:desk-lamp
+switch.buffet:
+  icon: mdi:lamp
+switch.decormaryse:
+  icon: mdi:lava-lamp
+switch.sousbureau:
+  icon: mdi:flashlight
+switch.piscine:
+  icon: mdi:pool
+switch.arbrenoel:
+  icon: mdi:pine-tree
+light.suspenduentree:
+  icon: mdi:ceiling-light
+light.railcomptoir:
+  icon: mdi:track-light
+light.railbureau:
+  icon: mdi:track-light
+light.railarmoire:
+  icon: mdi:track-light
+light.comptoirledstrip:
+  icon: mdi:led-strip
+light.led_buffet:
+  icon: mdi:led-strip
+light.torchere:
+  icon: mdi:spotlight-beam
+  icon_active: mdi-rotate-270
+light.lustre:
+  icon: mdi:ceiling-light
+light.chandelier:
+  icon: mdi:ceiling-light
+light.palfonierchambreprincipale:
+  icon: mdi:ceiling-light
+light.plafonnierchambreclement:
+  icon: mdi:ceiling-light
+light.plafonniersalon:
+  icon: mdi:ceiling-light
+light.conference:
+  icon: mdi:ceiling-light
+sun.sun:
+  friendly_name: Soleil
+media_player.kingsroom:
+  hidden: true
+sensor.hydroquebec_period_length:
+    friendly_name: HQ début de la période
+    unit_of_measurement: "jours"
+sensor.hydroquebec_period_total_bill:
+    friendly_name: HQ coût depuis début
+    unit_of_measurement: "$"    
+sensor.hydroquebec_period_total_days:
+    friendly_name: HQ durée de la période
+    unit_of_measurement: "jours"
+sensor.date_time:
+    hidden: true
+sensor.time_date:
+    hidden: true
+sensor.beat:
+    hidden: true
+sensor.peloquin_eta:
+    hidden: true
